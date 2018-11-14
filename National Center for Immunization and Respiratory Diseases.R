@@ -62,8 +62,6 @@ write.xlsx(Quarter.Proportion.df, file = "Quarter.xlsx")
 write.xlsx(Semiyear.Proportion.df, file = "Semi.xlsx")
 write.xlsx(Yearly.Proportion.df, file = "Year.xlsx")
 
-
-
 # Bar Plot
 Yearly.Proportion.df$Year <- 0:9 
 Year_Molten <- melt(Yearly.Proportion.df, id = c("Year"), variable.name = "Status")
@@ -125,7 +123,6 @@ LA.LiPA.Epi$Collection.Date.formatted <- as.POSIXct(LA.LiPA.Epi$Collection_Date,
 LA.LiPA.Epi$PCR.Date.formatted <- as.POSIXct(LA.LiPA.Epi$PCR_Date, format = '%m/%d/%Y')
 Collection.Time.Graph <- ggplot(LA.LiPA.Epi, aes(x = Collection.Date.formatted, y = Specimen_Age_yr_formatted)) + geom_point(shape = 1, color = "cyan") + geom_smooth(method = lm, se= FALSE) + ggtitle("IMPACT Collection Date and Specimen Age Graph")+ stat_poly_eq(formula = my.formula, aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), parse = TRUE, label.x.npc = "right", label.y.npc = 0.85) + stat_fit_glance(method = "lm", method.args = list(formula = my.formula), geom = "text", aes(label = paste("P-value = ", signif(..p.value.., digits = 3), sep = "")), label.x.npc = "right")
 Extraction.Time.Graph <- ggplot(LA.LiPA.Epi, aes(x = PCR.Date.formatted, y = Specimen_Age_yr_formatted), parse = TRUE) + geom_point(shape = 1, color = "cyan") + geom_smooth(method = lm, se= FALSE) + ggtitle("IMPACT PCR Date and Specimen Age Graph") + stat_poly_eq(formula = my.formula, aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), parse = TRUE, label.x.npc = "right", label.y.npc = 0.85) + stat_fit_glance(method = "lm", method.args = list(formula = my.formula), geom = "text", aes(label = paste("P-value = ", signif(..p.value.., digits = 3), sep = "")), label.x.npc = "right")
-
 
 #########################################
 ####       Vaccinnation type         ####
